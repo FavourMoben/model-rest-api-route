@@ -1,7 +1,8 @@
 import requests
-import pickle as pkl
+#import pickle as pkl
 from os.path import abspath,join,dirname
 from flask import Flask, request, jsonify
+dir = dirname(abspath(__file__))
 
 app = Flask(__name__)
 
@@ -14,8 +15,15 @@ def about():
     return 'About'
 
 
+@app.route('/test')
+def test():
+    payloads = { "inputs" : "how is your family doing?" }
+    return payloads
 
-dir = dirname(abspath(__file__))
+@app.route('/test2')
+def test():
+    return f"<h1>Everything is good</h1>{dir}"    
+
 def Loadmodel():
     with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'rb') as file:
         model1 = pkl.load(file)
@@ -55,15 +63,6 @@ def Loadmodel():
 #     return decodedOutput
 
 
-@app.route('/test')
-def test():
-    payloads = { "inputs" : "how is your family doing?" }
-    #output = requests.post("https://model-rest-api-route.vercel.app/predict",json=payloads)
-    return payloads
-
-@app.route('/test2')
-def test():
-    return "<h1>Everything is good</h1>"    
 
 # @app.route('/')
 # def home():
