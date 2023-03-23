@@ -1,8 +1,8 @@
-import requests
+#import requests
 #import pickle as pkl
-from os.path import abspath,join,dirname
+#from os.path import abspath,join,dirname
 from flask import Flask, request, jsonify
-dir = dirname(abspath(__file__))
+#dir = dirname(abspath(__file__))
 
 app = Flask(__name__)
 
@@ -22,19 +22,19 @@ def test():
 
 @app.route('/test2')
 def test():
-    return f"<h1>Everything is good</h1>{dir}"    
+    return f"<h1>Everything is good</h1>"    
 
-def Loadmodel():
-    with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'rb') as file:
-        model1 = pkl.load(file)
-    with open(join(dir, '..', 'data', 'pidgin_tokenizer.pkl'), 'rb') as file:
-        token1 = pkl.load(file)
-    with open(join(dir, '..', 'data', 't5_model.pkl'), 'rb') as file:
-        model2 = pkl.load(file)
-    with open(join(dir, '..', 'data', 't5_tokenizer.pkl'), 'rb') as file:
-        token2 = pkl.load(file)
+# def Loadmodel():
+#     with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'rb') as file:
+#         model1 = pkl.load(file)
+#     with open(join(dir, '..', 'data', 'pidgin_tokenizer.pkl'), 'rb') as file:
+#         token1 = pkl.load(file)
+#     with open(join(dir, '..', 'data', 't5_model.pkl'), 'rb') as file:
+#         model2 = pkl.load(file)
+#     with open(join(dir, '..', 'data', 't5_tokenizer.pkl'), 'rb') as file:
+#         token2 = pkl.load(file)
     
-    return model1, token1, model2, token2
+#     return model1, token1, model2, token2
 #from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 # t5_model = AutoModelForSeq2SeqLM.from_pretrained("t5-base")
