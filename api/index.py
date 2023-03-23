@@ -72,9 +72,6 @@ def predictOtherLangugages():
     return jsonify({'prediction': decodedOutput})
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
 def saveFiles():
     with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'wb') as file:
         pkl.dump(pidgin_model,file)
