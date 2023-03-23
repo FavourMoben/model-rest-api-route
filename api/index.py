@@ -15,7 +15,7 @@ def Loadmodel():
         token2 = pkl.load(file)
     
     return model1, token1, model2, token2
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+#from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 # t5_model = AutoModelForSeq2SeqLM.from_pretrained("t5-base")
 # t5_tokenizer = AutoTokenizer.from_pretrained("t5-base")
@@ -46,12 +46,12 @@ def predictOther(input: str, model, tokenizer, Language: str) -> str:
 @app.route('/')
 def home():
     payloads = { "inputs" : "how is your family doing?" }
-    output = requests.post("http://localhost:5000/predict",json=payloads)
+    output = requests.post("https://model-rest-api-route.vercel.app/predict",json=payloads)
     return output.json()
 @app.route('/other')
 def other():
     payloads = { "inputs" : "how is your family doing?", "lang" : "German" }
-    output = requests.post("http://localhost:5000/predict_other",json=payloads)
+    output = requests.post("https://model-rest-api-route.vercel.app/predict_other",json=payloads)
     return output.json()
 
 @app.route('/predict', methods=["POST"])
