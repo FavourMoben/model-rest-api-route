@@ -43,6 +43,16 @@ def predictOther(input: str, model, tokenizer, Language: str) -> str:
     return decodedOutput
 
 
+@app.route('/test')
+def test():
+    payloads = { "inputs" : "how is your family doing?" }
+    #output = requests.post("https://model-rest-api-route.vercel.app/predict",json=payloads)
+    return payloads
+
+@app.route('/test2')
+def test():
+    return "<h1>Everything is good</h1>"    
+
 @app.route('/')
 def home():
     payloads = { "inputs" : "how is your family doing?" }
