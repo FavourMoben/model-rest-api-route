@@ -37,6 +37,10 @@ def predictOther(input: str, model, tokenizer, Language: str) -> str:
     return decodedOutput
 
 
+@app.route("/")
+def home():
+    return "Hello, World"
+
 @app.route('/about')
 def about():
     return 'About'
@@ -50,11 +54,6 @@ def test():
 def test2():
     return "<h1>Everything is good</h1>"    
 
-@app.route('/')
-def home():
-    payloads = { "inputs" : "how is your family doing?" }
-    output = requests.post("https://model-rest-api-route.vercel.app/predict",json=payloads)
-    return output.json()
 
 @app.route('/other')
 def other():
@@ -79,6 +78,15 @@ def predictOtherLangugages():
     decodedOutput = predictOther(inputText,t5_model,t5_tokenizer,language)
     return jsonify({'prediction': decodedOutput})
 
+
+if __name__ == "__main__":
+    app.run()
+
+# @app.route('/')
+# def home():
+#     payloads = { "inputs" : "how is your family doing?" }
+#     output = requests.post("https://model-rest-api-route.vercel.app/predict",json=payloads)
+#     return output.json()
 
 # def saveFiles():
 #     with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'wb') as file:
