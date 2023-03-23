@@ -79,8 +79,8 @@ def predictOtherLangugages():
     return jsonify({'prediction': decodedOutput})
 
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()
 
 # @app.route('/')
 # def home():
