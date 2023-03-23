@@ -21,8 +21,8 @@ def test():
     return payloads
 
 @app.route('/test2')
-def test():
-    return f"<h1>Everything is good</h1>"    
+def test2():
+    return "<h1>Everything is good</h1>"    
 
 # def Loadmodel():
 #     with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'rb') as file:
