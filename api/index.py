@@ -39,7 +39,7 @@ def predictOther(input: str, model, tokenizer, Language: str) -> str:
 
 @app.route("/")
 def home():
-    return "Hello, World"
+    return f"Hello, World: {dir}"
 
 @app.route('/about')
 def about():
