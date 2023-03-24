@@ -1,26 +1,26 @@
-import requests
-import pickle as pkl
-from os.path import abspath,join,dirname
+# import requests
+# import pickle as pkl
+# from os.path import abspath,join,dirname
 from flask import Flask, request, jsonify
-dir = dirname(abspath(__file__))
+#dir = dirname(abspath(__file__))
 
 app = Flask(__name__)
 
 
 
-def Loadmodel():
-    with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'rb') as file:
-        model1 = pkl.load(file)
-    with open(join(dir, '..', 'data', 'pidgin_tokenizer.pkl'), 'rb') as file:
-        token1 = pkl.load(file)
-    with open(join(dir, '..', 'data', 't5_model.pkl'), 'rb') as file:
-        model2 = pkl.load(file)
-    with open(join(dir, '..', 'data', 't5_tokenizer.pkl'), 'rb') as file:
-        token2 = pkl.load(file)
+# def Loadmodel():
+#     with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'rb') as file:
+#         model1 = pkl.load(file)
+#     with open(join(dir, '..', 'data', 'pidgin_tokenizer.pkl'), 'rb') as file:
+#         token1 = pkl.load(file)
+#     with open(join(dir, '..', 'data', 't5_model.pkl'), 'rb') as file:
+#         model2 = pkl.load(file)
+#     with open(join(dir, '..', 'data', 't5_tokenizer.pkl'), 'rb') as file:
+#         token2 = pkl.load(file)
     
-    return model1, token1, model2, token2
+#     return model1, token1, model2, token2
 
-pidgin_model, pidgin_tokenizer, t5_model, t5_tokenizer = Loadmodel()
+# pidgin_model, pidgin_tokenizer, t5_model, t5_tokenizer = Loadmodel()
 
 
 def predictInput(input:str,model,tokenizer) -> str:
