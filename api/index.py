@@ -20,7 +20,7 @@ def Loadmodel():
     
     return model1, token1 #, model2, token2
 
-pidgin_model, pidgin_tokenizer = Loadmodel() #, t5_model, t5_tokenizer 
+#, t5_model, t5_tokenizer 
 
 
 def predictInput(input:str,model,tokenizer) -> str:
@@ -66,6 +66,7 @@ def other():
 @app.route('/predict', methods=["POST"])
 def predict():
     # Get the input data from the request body
+    pidgin_model, pidgin_tokenizer = Loadmodel() 
     data = request.json
     inputText = data["inputs"]
     decodedOutput = predictInput(inputText,pidgin_model,pidgin_tokenizer)
