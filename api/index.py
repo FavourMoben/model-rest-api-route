@@ -20,7 +20,7 @@ def Loadmodel():
     
     return model1, token1, model2, token2
 
-# pidgin_model, pidgin_tokenizer, t5_model, t5_tokenizer = Loadmodel()
+pidgin_model, pidgin_tokenizer, t5_model, t5_tokenizer = Loadmodel()
 
 
 def predictInput(input:str,model,tokenizer) -> str:
