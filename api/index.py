@@ -13,14 +13,14 @@ def Loadmodel():
         model1 = pkl.load(file)
     with open(join(dir, '..', 'data', 'pidgin_tokenizer.pkl'), 'rb') as file:
         token1 = pkl.load(file)
-    with open(join(dir, '..', 'data', 't5_model.pkl'), 'rb') as file:
-        model2 = pkl.load(file)
-    with open(join(dir, '..', 'data', 't5_tokenizer.pkl'), 'rb') as file:
-        token2 = pkl.load(file)
+    # with open(join(dir, '..', 'data', 't5_model.pkl'), 'rb') as file:
+    #     model2 = pkl.load(file)
+    # with open(join(dir, '..', 'data', 't5_tokenizer.pkl'), 'rb') as file:
+    #     token2 = pkl.load(file)
     
-    return model1, token1, model2, token2
+    return model1, token1 #, model2, token2
 
-pidgin_model, pidgin_tokenizer, t5_model, t5_tokenizer = Loadmodel()
+pidgin_model, pidgin_tokenizer = Loadmodel() #, t5_model, t5_tokenizer 
 
 
 def predictInput(input:str,model,tokenizer) -> str:
@@ -45,14 +45,16 @@ def home():
 def about():
     return 'About'
 
-@app.route('/test')
-def test():
-    payloads = { "inputs" : "how is your family doing?" }
-    return payloads
 
 @app.route('/test2')
 def test2():
     return "<h1>Everything is good</h1>"    
+
+@app.route('/test')
+def test():
+    payloads = { "inputs" : "how is your family doing?"}
+    output = requests.post("https://model-rest-api-route.vercel.app/predict",json=payloads)
+    return output.json()
 
 
 @app.route('/other')
