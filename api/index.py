@@ -1,8 +1,8 @@
 # import requests
 import pickle as pkl
-# from os.path import abspath,join,dirname
+from os.path import abspath,join,dirname
 from flask import Flask, request, jsonify
-#dir = dirname(abspath(__file__))
+dir = dirname(abspath(__file__))
 
 app = Flask(__name__)
 
