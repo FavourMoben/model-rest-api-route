@@ -1,5 +1,5 @@
 # import requests
-# import pickle as pkl
+import pickle as pkl
 # from os.path import abspath,join,dirname
 from flask import Flask, request, jsonify
 #dir = dirname(abspath(__file__))
