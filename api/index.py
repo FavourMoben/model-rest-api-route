@@ -8,19 +8,20 @@ app = Flask(__name__)
 
 
 
-def Loadmodel():
-    with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'rb') as file:
-        model1 = pkl.load(file)
-    with open(join(dir, '..', 'data', 'pidgin_tokenizer.pkl'), 'rb') as file:
-        token1 = pkl.load(file)
-    # with open(join(dir, '..', 'data', 't5_model.pkl'), 'rb') as file:
-    #     model2 = pkl.load(file)
-    # with open(join(dir, '..', 'data', 't5_tokenizer.pkl'), 'rb') as file:
-    #     token2 = pkl.load(file)
-    
-    return model1, token1 #, model2, token2
+def Loadmodel(model: str):
+    if model == "t5":
+        with open(join(dir, '..', 'data', 't5_model.pkl'), 'rb') as file:
+            model = pkl.load(file)
+        with open(join(dir, '..', 'data', 't5_tokenizer.pkl'), 'rb') as file:
+            token = pkl.load(file)
+        return mode, token
 
-#, t5_model, t5_tokenizer 
+    with open(join(dir, '..', 'data', 'pidgin_model.pkl'), 'rb') as file:
+        model = pkl.load(file)
+    with open(join(dir, '..', 'data', 'pidgin_tokenizer.pkl'), 'rb') as file:
+        token = pkl.load(file)
+    return model, token #, model2, token2
+
 
 
 def predictInput(input:str,model,tokenizer) -> str:
@@ -66,7 +67,7 @@ def other():
 @app.route('/predict', methods=["POST"])
 def predict():
     # Get the input data from the request body
-    pidgin_model, pidgin_tokenizer = Loadmodel() 
+    pidgin_model, pidgin_tokenizer = Loadmodel("not-t5") 
     data = request.json
     inputText = data["inputs"]
     decodedOutput = predictInput(inputText,pidgin_model,pidgin_tokenizer)
@@ -75,6 +76,7 @@ def predict():
 @app.route('/predict_other', methods=["POST"])
 def predictOtherLangugages():
     # Get the input data from the request body
+    t5_model, t5_tokenizer = Loadmodel("t5") 
     data = request.json
     inputText = data["inputs"]
     language = data["lang"]
